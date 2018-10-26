@@ -36,6 +36,11 @@ namespace UTSHelper.CistNure.Timetable
         public int PairNumber { get; private set; }
 
         /// <summary>
+        /// Аудитория, в которой проводится занятие.
+        /// </summary>
+        public string Auditory { get; private set; }
+
+        /// <summary>
         /// Группы, у которых проводится занятие.
         /// </summary>
         public string Groups { get; private set; }
@@ -49,13 +54,14 @@ namespace UTSHelper.CistNure.Timetable
         /// <param name="dateTimeEnd">Время окончания занятия.</param>
         /// <param name="pairNumber">Номер пары.</param>
         /// <param name="groups">Группы, у которых проводится занятие.</param>
-        public Lesson(string subject, string type, DateTime dateTimeBegin, DateTime dateTimeEnd, int pairNumber, string groups)
+        public Lesson(string subject, string type, DateTime dateTimeBegin, DateTime dateTimeEnd, int pairNumber, string auditory, string groups)
         {
             Subject = subject;
             Type = type;
             DateTimeBegin = dateTimeBegin;
             DateTimeEnd = dateTimeEnd;
             PairNumber = pairNumber;
+            Auditory = auditory;
             Groups = groups;
         }
 
@@ -78,7 +84,11 @@ namespace UTSHelper.CistNure.Timetable
         public string ToTaskListString()
         {
             string groups = GetGroupsAlias(Groups);
-            return PairTimeByNumber(PairNumber) + ", " + 229 + ", " + GetSubjectAlias(Subject) + ", " + GetTypeAlias(Type) + " (" + groups + ").";
+            return PairTimeByNumber(PairNumber) + ", " 
+                + GetAuditoryAlias(Auditory) + ", " 
+                + GetSubjectAlias(Subject) + ", " 
+                + GetTypeAlias(Type) 
+                + " (" + groups + ").";
         }
 
         private string GetSubjectAlias(string subject)
@@ -144,6 +154,18 @@ namespace UTSHelper.CistNure.Timetable
                     alias = "КИУКИ-16-1, КИУКИи-16-1";
                     break;
             }
+            return alias;
+        }
+
+        private string GetAuditoryAlias(string auditory)
+        {
+            string alias = auditory;
+            //switch (auditory)
+            //{
+            //    case "INTERNET-технологіі":
+            //        alias = "ИТех";
+            //        break;
+            //}
             return alias;
         }
 

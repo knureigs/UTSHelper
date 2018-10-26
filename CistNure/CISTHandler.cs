@@ -100,7 +100,9 @@ namespace UTSHelper
             Lesson[] timetableEvents = objEvents.Select(e => new Lesson(objSubjects.First(s => s.id == e.subject_id).title,
                 eventTypesBase[eventTypesToBaseTypes[e.type]],
                 ((long)e.start_time).FromUnixTimestamp(),
-                ((long)e.end_time).FromUnixTimestamp(), e.number_pair,
+                ((long)e.end_time).FromUnixTimestamp(), 
+                e.number_pair,
+                e.auditory,
                 String.Concat(e.groups.Select(g => groups[g] + ", ").ToArray()))).ToArray();
 
             return new Timetable(timetableEvents, subjectsDescription);
