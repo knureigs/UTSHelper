@@ -35,6 +35,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.teacherComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.setDatesCurrentMonthButton = new System.Windows.Forms.Button();
+            this.setDatesNextMonthButton = new System.Windows.Forms.Button();
             this.setDatesButton = new System.Windows.Forms.Button();
             this.toDatePicker = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
@@ -46,12 +48,12 @@
             this.statusStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.filterSubjectComboBox = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.timeSheetTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.filterTypeComboBox = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.filterTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.filterSubjectComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -94,9 +96,9 @@
             // 
             this.departmentComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.departmentComboBox.FormattingEnabled = true;
-            this.departmentComboBox.Location = new System.Drawing.Point(3, 67);
+            this.departmentComboBox.Location = new System.Drawing.Point(6, 66);
             this.departmentComboBox.Name = "departmentComboBox";
-            this.departmentComboBox.Size = new System.Drawing.Size(121, 21);
+            this.departmentComboBox.Size = new System.Drawing.Size(138, 21);
             this.departmentComboBox.TabIndex = 12;
             // 
             // label3
@@ -112,14 +114,16 @@
             // 
             this.teacherComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.teacherComboBox.FormattingEnabled = true;
-            this.teacherComboBox.Location = new System.Drawing.Point(3, 117);
+            this.teacherComboBox.Location = new System.Drawing.Point(6, 116);
             this.teacherComboBox.Name = "teacherComboBox";
-            this.teacherComboBox.Size = new System.Drawing.Size(121, 21);
+            this.teacherComboBox.Size = new System.Drawing.Size(138, 21);
             this.teacherComboBox.TabIndex = 3;
             this.teacherComboBox.SelectedIndexChanged += new System.EventHandler(this.teacherComboBox_SelectedIndexChanged);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.setDatesCurrentMonthButton);
+            this.groupBox1.Controls.Add(this.setDatesNextMonthButton);
             this.groupBox1.Controls.Add(this.setDatesButton);
             this.groupBox1.Controls.Add(this.toDatePicker);
             this.groupBox1.Controls.Add(this.label5);
@@ -127,16 +131,36 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(6, 148);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(118, 140);
+            this.groupBox1.Size = new System.Drawing.Size(138, 193);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Временные рамки";
             // 
+            // setDatesCurrentMonthButton
+            // 
+            this.setDatesCurrentMonthButton.Location = new System.Drawing.Point(6, 71);
+            this.setDatesCurrentMonthButton.Name = "setDatesCurrentMonthButton";
+            this.setDatesCurrentMonthButton.Size = new System.Drawing.Size(126, 38);
+            this.setDatesCurrentMonthButton.TabIndex = 16;
+            this.setDatesCurrentMonthButton.Text = "С 1-го по 31-е текущего месяца";
+            this.setDatesCurrentMonthButton.UseVisualStyleBackColor = true;
+            this.setDatesCurrentMonthButton.Click += new System.EventHandler(this.setDatesCurrentMonthButton_Click);
+            // 
+            // setDatesNextMonthButton
+            // 
+            this.setDatesNextMonthButton.Location = new System.Drawing.Point(6, 115);
+            this.setDatesNextMonthButton.Name = "setDatesNextMonthButton";
+            this.setDatesNextMonthButton.Size = new System.Drawing.Size(126, 41);
+            this.setDatesNextMonthButton.TabIndex = 16;
+            this.setDatesNextMonthButton.Text = "С 1-го по 31-е следующего месяца";
+            this.setDatesNextMonthButton.UseVisualStyleBackColor = true;
+            this.setDatesNextMonthButton.Click += new System.EventHandler(this.setDatesNextMonthButton_Click);
+            // 
             // setDatesButton
             // 
-            this.setDatesButton.Location = new System.Drawing.Point(7, 107);
+            this.setDatesButton.Location = new System.Drawing.Point(6, 162);
             this.setDatesButton.Name = "setDatesButton";
-            this.setDatesButton.Size = new System.Drawing.Size(105, 23);
+            this.setDatesButton.Size = new System.Drawing.Size(126, 23);
             this.setDatesButton.TabIndex = 16;
             this.setDatesButton.Text = "С 26-го по 25-е";
             this.setDatesButton.UseVisualStyleBackColor = true;
@@ -145,42 +169,42 @@
             // toDatePicker
             // 
             this.toDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.toDatePicker.Location = new System.Drawing.Point(6, 80);
+            this.toDatePicker.Location = new System.Drawing.Point(33, 45);
             this.toDatePicker.Name = "toDatePicker";
-            this.toDatePicker.Size = new System.Drawing.Size(106, 20);
+            this.toDatePicker.Size = new System.Drawing.Size(99, 20);
             this.toDatePicker.TabIndex = 15;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 64);
+            this.label5.Location = new System.Drawing.Point(9, 48);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(22, 13);
+            this.label5.Size = new System.Drawing.Size(25, 13);
             this.label5.TabIndex = 110;
-            this.label5.Text = "До";
+            this.label5.Text = "До:";
             // 
             // fromDatePicker
             // 
             this.fromDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.fromDatePicker.Location = new System.Drawing.Point(6, 36);
+            this.fromDatePicker.Location = new System.Drawing.Point(33, 19);
             this.fromDatePicker.Name = "fromDatePicker";
-            this.fromDatePicker.Size = new System.Drawing.Size(106, 20);
+            this.fromDatePicker.Size = new System.Drawing.Size(99, 20);
             this.fromDatePicker.TabIndex = 14;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 20);
+            this.label4.Location = new System.Drawing.Point(9, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(20, 13);
+            this.label4.Size = new System.Drawing.Size(23, 13);
             this.label4.TabIndex = 110;
-            this.label4.Text = "От";
+            this.label4.Text = "От:";
             // 
             // getTimesheetButton
             // 
-            this.getTimesheetButton.Location = new System.Drawing.Point(6, 297);
+            this.getTimesheetButton.Location = new System.Drawing.Point(12, 347);
             this.getTimesheetButton.Name = "getTimesheetButton";
-            this.getTimesheetButton.Size = new System.Drawing.Size(112, 23);
+            this.getTimesheetButton.Size = new System.Drawing.Size(126, 36);
             this.getTimesheetButton.TabIndex = 17;
             this.getTimesheetButton.Text = "Получить";
             this.getTimesheetButton.UseVisualStyleBackColor = true;
@@ -188,9 +212,10 @@
             // 
             // getConsultationButton
             // 
-            this.getConsultationButton.Location = new System.Drawing.Point(6, 325);
+            this.getConsultationButton.Enabled = false;
+            this.getConsultationButton.Location = new System.Drawing.Point(12, 389);
             this.getConsultationButton.Name = "getConsultationButton";
-            this.getConsultationButton.Size = new System.Drawing.Size(112, 23);
+            this.getConsultationButton.Size = new System.Drawing.Size(126, 23);
             this.getConsultationButton.TabIndex = 18;
             this.getConsultationButton.Text = "Консультации";
             this.getConsultationButton.UseVisualStyleBackColor = true;
@@ -200,21 +225,23 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusStripLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 363);
+            this.statusStrip.Location = new System.Drawing.Point(0, 488);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(595, 22);
+            this.statusStrip.Size = new System.Drawing.Size(601, 22);
             this.statusStrip.TabIndex = 5;
             this.statusStrip.Text = "statusStrip1";
             // 
             // statusStripLabel
             // 
             this.statusStripLabel.Name = "statusStripLabel";
-            this.statusStripLabel.Size = new System.Drawing.Size(109, 17);
+            this.statusStripLabel.Size = new System.Drawing.Size(118, 17);
             this.statusStripLabel.Text = "toolStripStatusLabel1";
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -231,13 +258,14 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(595, 363);
-            this.splitContainer1.SplitterDistance = 139;
+            this.splitContainer1.Size = new System.Drawing.Size(601, 488);
+            this.splitContainer1.SplitterDistance = 155;
             this.splitContainer1.TabIndex = 61;
             // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.IsSplitterFixed = true;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -255,39 +283,20 @@
             this.splitContainer2.Panel2.Controls.Add(this.label6);
             this.splitContainer2.Panel2.Controls.Add(this.filterTypeComboBox);
             this.splitContainer2.Panel2.Controls.Add(this.filterSubjectComboBox);
-            this.splitContainer2.Size = new System.Drawing.Size(452, 363);
-            this.splitContainer2.SplitterDistance = 136;
+            this.splitContainer2.Size = new System.Drawing.Size(442, 488);
+            this.splitContainer2.SplitterDistance = 83;
             this.splitContainer2.TabIndex = 0;
-            // 
-            // filterSubjectComboBox
-            // 
-            this.filterSubjectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.filterSubjectComboBox.Enabled = false;
-            this.filterSubjectComboBox.FormattingEnabled = true;
-            this.filterSubjectComboBox.Location = new System.Drawing.Point(6, 28);
-            this.filterSubjectComboBox.Name = "filterSubjectComboBox";
-            this.filterSubjectComboBox.Size = new System.Drawing.Size(195, 21);
-            this.filterSubjectComboBox.TabIndex = 8;
-            this.filterSubjectComboBox.SelectedIndexChanged += new System.EventHandler(this.filterSubjectComboBox_SelectedIndexChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Enabled = false;
-            this.label6.Location = new System.Drawing.Point(4, 12);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(52, 13);
-            this.label6.TabIndex = 111;
-            this.label6.Text = "Предмет";
             // 
             // timeSheetTextBox
             // 
+            this.timeSheetTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.timeSheetTextBox.Enabled = false;
             this.timeSheetTextBox.Location = new System.Drawing.Point(7, 72);
             this.timeSheetTextBox.Multiline = true;
             this.timeSheetTextBox.Name = "timeSheetTextBox";
             this.timeSheetTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.timeSheetTextBox.Size = new System.Drawing.Size(414, 136);
+            this.timeSheetTextBox.Size = new System.Drawing.Size(414, 195);
             this.timeSheetTextBox.TabIndex = 11;
             // 
             // label7
@@ -300,6 +309,26 @@
             this.label7.TabIndex = 111;
             this.label7.Text = "Расписание";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Enabled = false;
+            this.label8.Location = new System.Drawing.Point(224, 12);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(70, 13);
+            this.label8.TabIndex = 111;
+            this.label8.Text = "Тип занятия";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Enabled = false;
+            this.label6.Location = new System.Drawing.Point(4, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(52, 13);
+            this.label6.TabIndex = 111;
+            this.label6.Text = "Предмет";
+            // 
             // filterTypeComboBox
             // 
             this.filterTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -311,15 +340,16 @@
             this.filterTypeComboBox.TabIndex = 9;
             this.filterTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.filterTypeComboBox_SelectedIndexChanged);
             // 
-            // label8
+            // filterSubjectComboBox
             // 
-            this.label8.AutoSize = true;
-            this.label8.Enabled = false;
-            this.label8.Location = new System.Drawing.Point(224, 12);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 13);
-            this.label8.TabIndex = 111;
-            this.label8.Text = "Тип занятия";
+            this.filterSubjectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.filterSubjectComboBox.Enabled = false;
+            this.filterSubjectComboBox.FormattingEnabled = true;
+            this.filterSubjectComboBox.Location = new System.Drawing.Point(6, 28);
+            this.filterSubjectComboBox.Name = "filterSubjectComboBox";
+            this.filterSubjectComboBox.Size = new System.Drawing.Size(195, 21);
+            this.filterSubjectComboBox.TabIndex = 8;
+            this.filterSubjectComboBox.SelectedIndexChanged += new System.EventHandler(this.filterSubjectComboBox_SelectedIndexChanged);
             // 
             // UTSControl
             // 
@@ -328,7 +358,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip);
             this.Name = "UTSControl";
-            this.Size = new System.Drawing.Size(595, 385);
+            this.Size = new System.Drawing.Size(601, 510);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.statusStrip.ResumeLayout(false);
@@ -373,5 +403,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox filterTypeComboBox;
         private System.Windows.Forms.ComboBox filterSubjectComboBox;
+        private System.Windows.Forms.Button setDatesCurrentMonthButton;
+        private System.Windows.Forms.Button setDatesNextMonthButton;
     }
 }

@@ -67,7 +67,10 @@ namespace UTSHelper
             string utBegin = begin.ToUnixTimestamp().ToString();
             string utEnd = end.ToUnixTimestamp().ToString();
 
-            string savedData = "SavedData/timetable" + teacherId + utBegin + utEnd + ".json";
+            //string savedData = "SavedData/timetable" + teacherId + utBegin + utEnd + ".json";
+            // заглушка для проверки при неработающем ЦИСТе
+            string savedData = "SavedData/timetable435357115383304001541012400.json";
+
             json = GetResponse(savedData, CistRequests.GetTimeSheetRequestString(teacherId, utBegin, utEnd));
                             
             // перевести на использование исключений.

@@ -94,11 +94,22 @@ namespace UTSHelper
         /// <summary>
         /// заглушка для отладки, автовыбор факультета, кафедры и преподавателя.
         /// </summary>
-        internal void InitForDebag()
+        internal void InitForDebagLyashenko()
         {
             facultyComboBox.SelectedIndex = 8;      // КИУ
             departmentComboBox.SelectedIndex = 2;   // ЭВМ
             teacherComboBox.SelectedIndex = 23;     // Ляшенко
+            setDatesButton.PerformClick();          // текущий месяц для отчетности.
+        }
+
+        /// <summary>
+        /// заглушка для отладки, автовыбор факультета, кафедры и преподавателя.
+        /// </summary>
+        internal void InitForDebag()
+        {
+            facultyComboBox.SelectedIndex = 8;      // КИУ
+            departmentComboBox.SelectedIndex = 2;   // ЭВМ
+            teacherComboBox.SelectedIndex = 16;     // Иващенко
             setDatesButton.PerformClick();          // текущий месяц для отчетности.
         }
 
@@ -137,6 +148,28 @@ namespace UTSHelper
             filterSubjectComboBox.Enabled = false;
             filterTypeComboBox.Enabled = false;
             timeSheetTextBox.Enabled = false;
+        }
+
+        private void setDatesCurrentMonthButton_Click(object sender, EventArgs e)
+        {
+            AssumeDates(DateTime.Now.Year, DateTime.Now.Month);
+
+            // for test
+            //List<string> list = new List<string>(12);
+            //for (int i = 1; i < 13; i++)
+            //{
+            //    System.Threading.Thread.Sleep(1000);
+            //    AssumeDates(DateTime.Now.Year, i);
+            //    list.Add(fromDatePicker.Value.ToShortDateString() + " " + toDatePicker.Value.ToShortDateString());
+            //}
+            //timeSheetTextBox.Lines = list.ToArray();
+        }
+
+        private void setDatesNextMonthButton_Click(object sender, EventArgs e)
+        {
+            int nextMonth = DateTime.Now.Month == 12 ? 1 : DateTime.Now.Month + 1;
+            int nextYear = nextMonth == 1 ? DateTime.Now.Year + 1 : DateTime.Now.Year;
+            AssumeDates(nextYear, nextMonth);
         }
 
         private void setDatesButton_Click(object sender, EventArgs e)
@@ -187,6 +220,22 @@ namespace UTSHelper
             facultyComboBox.Items.AddRange(faculties.ToArray<string>());
             facultyComboBox.SelectedIndexChanged += facultyComboBox_SelectedIndexChanged;
             facultyComboBox.Focus();
+        }
+
+        /// <summary>
+        /// Предложить значения полей выбора дат, как для временных рамок типичного отчетного месяца.
+        /// </summary>
+        /// <param name="yearNumber">Номер требуемого года.</param>
+        /// <param name="monthNumber">Номер требуемого месяца.</param>
+        private void AssumeDates(int yearNumber, int monthNumber)
+        {
+            DateTime now = DateTime.Now;
+            int daysInMonth = DateTime.DaysInMonth(yearNumber, monthNumber);
+            DateTime begin = new DateTime(now.Year, monthNumber, 1);
+            DateTime end = new DateTime(now.Year, monthNumber, daysInMonth);
+            
+            fromDatePicker.Value = begin;
+            toDatePicker.Value = end;
         }
 
         /// <summary>
