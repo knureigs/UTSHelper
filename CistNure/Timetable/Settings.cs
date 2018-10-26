@@ -35,6 +35,28 @@ namespace UTSHelper.CistNure.Timetable
                             AliasSubject.Add(key, alias);
                         }
                     }
+                    if (xnode.Name == "type")
+                    {
+                        foreach (XmlNode childNode in xnode.ChildNodes)
+                        {
+                            XmlNode attr = childNode.Attributes.GetNamedItem("key");
+                            string key = attr.Value;
+                            attr = childNode.Attributes.GetNamedItem("value");
+                            string alias = attr.Value;
+                            AliasType.Add(key, alias);
+                        }
+                    }
+                    if (xnode.Name == "groups")
+                    {
+                        foreach (XmlNode childNode in xnode.ChildNodes)
+                        {
+                            XmlNode attr = childNode.Attributes.GetNamedItem("key");
+                            string key = attr.Value;
+                            attr = childNode.Attributes.GetNamedItem("value");
+                            string alias = attr.Value;
+                            AliasGroups.Add(key, alias);
+                        }
+                    }
                 }
             }
         }
@@ -42,11 +64,9 @@ namespace UTSHelper.CistNure.Timetable
         public static string GetAliasSubject(string subject)
         {
             string alias = subject;
-            switch (subject)
+            if(AliasSubject.ContainsKey(subject))
             {
-                case "INTERNET-технологіі":
-                    alias = "ИТех";
-                    break;
+                alias = AliasSubject[subject];
             }
             return alias;
         }
@@ -54,14 +74,9 @@ namespace UTSHelper.CistNure.Timetable
         public static string GetAliasType(string type)
         {
             string alias = type;
-            switch (type)
+            if (AliasType.ContainsKey(type))
             {
-                case "Лабораторна робота":
-                    alias = "лабораторная работа №0";
-                    break;
-                case "Лекція":
-                    alias = "лекция №0";
-                    break;
+                alias = AliasType[type];
             }
             return alias;
         }
@@ -69,38 +84,9 @@ namespace UTSHelper.CistNure.Timetable
         public static string GetAliasGroups(string group)
         {
             string alias = group;
-            switch (group)
+            if (AliasGroups.ContainsKey(group))
             {
-                case "КІУКІ - 16 - 1, КІУКІ - 16 - 4, КІУКІ - 16 - 2, КІУКІ - 16 - 3, КІУКІ - 16 - 5, КІУКІи - 16 - 1, ":
-                    alias = "КИУКИи-16-1; КИУКИ-16-1, 2, 3, 4, 5";
-                    break;
-                case "КІУКІ-16-1, КІУКІ-16-4, КІУКІ-16-2, КІУКІ-16-3, КІУКІ-16-5, КІУКІи-16-1, ":
-                    alias = "КИУКИи-16-1; КИУКИ-16-1, 2, 3, 4, 5";
-                    break;
-                case "КІУКІу-17-9, КІУКІу-17-10, ":
-                    alias = "КИУКИу-17-9, 10";
-                    break;
-                case "КІУКІу-17-9, ":
-                    alias = "КИУКИу-17-9";
-                    break;
-                case "КІУКІу-17-10, ":
-                    alias = "КИУКИу-17-10";
-                    break;
-                case "КІУКІ-16-5, ":
-                    alias = "КИУКИ-16-5";
-                    break;
-                case "КІУКІ-16-4, ":
-                    alias = "КИУКИ-16-4";
-                    break;
-                case "КІУКІ-16-3, ":
-                    alias = "КИУКИ-16-3";
-                    break;
-                case "КІУКІ-16-2, ":
-                    alias = "КИУКИ-16-2";
-                    break;
-                case "КІУКІ-16-1, КІУКІи-16-1, ":
-                    alias = "КИУКИ-16-1, КИУКИи-16-1";
-                    break;
+                alias = AliasGroups[group];
             }
             return alias;
         }
@@ -108,12 +94,7 @@ namespace UTSHelper.CistNure.Timetable
         public static string GetAliasAuditory(string auditory)
         {
             string alias = auditory;
-            //switch (auditory)
-            //{
-            //    case "INTERNET-технологіі":
-            //        alias = "ИТех";
-            //        break;
-            //}
+
             return alias;
         }
     }
