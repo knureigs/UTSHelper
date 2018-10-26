@@ -74,6 +74,78 @@ namespace UTSHelper.CistNure.Timetable
         {
             return DateTimeBegin.ToShortDateString() + "\t" + PairTimeByNumber(PairNumber) + ",\t" + Groups;
         }
+        
+        public string ToTaskListString()
+        {
+            string groups = GetGroupsAlias(Groups);
+            return PairTimeByNumber(PairNumber) + ", " + 229 + ", " + GetSubjectAlias(Subject) + ", " + GetTypeAlias(Type) + " (" + groups + ").";
+        }
+
+        private string GetSubjectAlias(string subject)
+        {
+            string alias = subject;
+            switch(subject)
+            {
+                case "INTERNET-технологіі":
+                    alias = "ИТех";
+                    break;
+            }
+            return alias;
+        }
+
+        private string GetTypeAlias(string type)
+        {
+            string alias = type;
+            switch (type)
+            {
+                case "Лабораторна робота":
+                    alias = "лабораторная работа №0";
+                    break;
+                case "Лекція":
+                    alias = "лекция №0";
+                    break;
+            }
+            return alias;
+        }
+
+        private string GetGroupsAlias(string group)
+        {
+            string alias = group;
+            switch (group)
+            {
+                case "КІУКІ - 16 - 1, КІУКІ - 16 - 4, КІУКІ - 16 - 2, КІУКІ - 16 - 3, КІУКІ - 16 - 5, КІУКІи - 16 - 1, ":
+                    alias = "КИУКИи-16-1; КИУКИ-16-1, 2, 3, 4, 5";
+                    break;
+                case "КІУКІ-16-1, КІУКІ-16-4, КІУКІ-16-2, КІУКІ-16-3, КІУКІ-16-5, КІУКІи-16-1, ":
+                    alias = "КИУКИи-16-1; КИУКИ-16-1, 2, 3, 4, 5";
+                    break;
+                case "КІУКІу-17-9, КІУКІу-17-10, ":
+                    alias = "КИУКИу-17-9, 10";
+                    break;
+                case "КІУКІу-17-9, ":
+                    alias = "КИУКИу-17-9";
+                    break;
+                case "КІУКІу-17-10, ":
+                    alias = "КИУКИу-17-10";
+                    break;
+                case "КІУКІ-16-5, ":
+                    alias = "КИУКИ-16-5";
+                    break;
+                case "КІУКІ-16-4, ":
+                    alias = "КИУКИ-16-4";
+                    break;
+                case "КІУКІ-16-3, ":
+                    alias = "КИУКИ-16-3";
+                    break;
+                case "КІУКІ-16-2, ":
+                    alias = "КИУКИ-16-2";
+                    break;
+                case "КІУКІ-16-1, КІУКІи-16-1, ":
+                    alias = "КИУКИ-16-1, КИУКИи-16-1";
+                    break;
+            }
+            return alias;
+        }
 
         private string PairTimeByNumber(int pairNumber)
         {

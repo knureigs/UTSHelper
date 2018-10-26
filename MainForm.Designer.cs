@@ -36,7 +36,7 @@
             this.utsControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.utsControl1.Location = new System.Drawing.Point(0, 0);
             this.utsControl1.Name = "utsControl1";
-            this.utsControl1.Size = new System.Drawing.Size(784, 438);
+            this.utsControl1.Size = new System.Drawing.Size(784, 493);
             this.utsControl1.TabIndex = 0;
             this.utsControl1.UTSController = null;
             // 
@@ -44,7 +44,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 438);
+            this.ClientSize = new System.Drawing.Size(784, 493);
             this.Controls.Add(this.utsControl1);
             this.Name = "MainForm";
             this.Text = "University Timesheet Helper";

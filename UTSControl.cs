@@ -110,7 +110,8 @@ namespace UTSHelper
             facultyComboBox.SelectedIndex = 8;      // КИУ
             departmentComboBox.SelectedIndex = 2;   // ЭВМ
             teacherComboBox.SelectedIndex = 16;     // Иващенко
-            setDatesButton.PerformClick();          // текущий месяц для отчетности.
+            setDatesCurrentMonthButton.PerformClick();          // текущий месяц
+            getTaskListButton.PerformClick();          // получить список дел
         }
 
         private void departmentComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -207,6 +208,17 @@ namespace UTSHelper
             FillTimetable(timetable);
         }
 
+        private void getTaskListButton_Click(object sender, EventArgs e)
+        {
+            DateTime begin = fromDatePicker.Value;
+            // добавление одного дня, для включения верхней границы в диапазон
+            DateTime end = toDatePicker.Value.AddDays(1);
+            string teacher = teacherComboBox.SelectedItem.ToString();
+
+            Timetable timetable = UTSController.GetTimetable(teacher, begin, end);
+            FillTaskList(timetable);
+        }
+
         #endregion
 
         #region Логика.
@@ -222,8 +234,10 @@ namespace UTSHelper
             facultyComboBox.Focus();
         }
 
+        #region Предлагаемые даты
+
         /// <summary>
-        /// Предложить значения полей выбора дат, как для временных рамок типичного отчетного месяца.
+        /// Предложить значения полей выбора дат.
         /// </summary>
         /// <param name="yearNumber">Номер требуемого года.</param>
         /// <param name="monthNumber">Номер требуемого месяца.</param>
@@ -241,6 +255,7 @@ namespace UTSHelper
         /// <summary>
         /// Предложить значения полей выбора дат, как для временных рамок типичного отчетного месяца.
         /// </summary>
+        /// <remarks>Deprecated.</remarks>
         private void AssumeDateForCurrentMonth()
         {
             DateTime begin;
@@ -295,6 +310,8 @@ namespace UTSHelper
             toDatePicker.Value = end;
         }
 
+        #endregion
+
         /// <summary>
         /// Переключение текста строки состояния.
         /// </summary>
@@ -333,6 +350,46 @@ namespace UTSHelper
             filterSubjectComboBox.Enabled = true;
             filterTypeComboBox.Enabled = true;
             timeSheetTextBox.Enabled = true;
+        }
+
+        // for dual pair
+        // private Lesson _previousPair;
+
+        private void FillTaskList(Timetable timetable)
+        {
+            taskListTextBox.Text = "";
+
+            const string dayTaskListTitleBegin = "Задачи на ";
+
+            int daysAmount = (toDatePicker.Value - fromDatePicker.Value).Days;
+            DateTime currentDate = fromDatePicker.Value.Date;
+            for (int i = 0; i <= daysAmount; i++)
+            {
+                // подготовка заголовка списка дел на текущий день
+                string currentDay = currentDate.ToString("yyyy.MM.dd") + ", " + currentDate.ToString("dddd");
+                string dayTaskListTitle = dayTaskListTitleBegin + currentDay + ":";
+                taskListTextBox.Text += dayTaskListTitle + "\r\n";
+
+                // добавление задач на текущий день
+                foreach (Lesson lesson in timetable.Events)
+                {
+                    // если занятие не на требуемую дату, не рассматриваем.
+                    DateTime lessonDate = lesson.DateTimeBegin.Date;
+                    if (lessonDate != currentDate)
+                    {
+                        continue;
+                    }
+
+                    //if (_previousPair.DateTimeBegin.Date == )
+                    //string temp = ttEvent.ToTaskListString();
+                    //_previousPair = temp.Remove(0, temp.IndexOf(","));
+
+                    //string date = ttEvent.DateTimeBegin.ToString("YYYY.MM.dd") + ", " + now.ToString("dddd") + ":";
+                    taskListTextBox.Text += "- " + lesson.ToTaskListString() + "\r\n";
+                }
+
+                currentDate = currentDate.AddDays(1);
+            }
         }
 
         #endregion
