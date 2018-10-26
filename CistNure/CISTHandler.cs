@@ -16,6 +16,11 @@ namespace UTSHelper
     /// </summary>
     public class CISTHandler
     {
+        public CISTHandler()
+        {
+            Settings.Load();
+        }
+
         /// <summary>
         /// Получение коллекции всех факультетов университета.
         /// </summary>
