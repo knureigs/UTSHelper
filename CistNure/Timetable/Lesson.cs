@@ -41,8 +41,9 @@ namespace UTSHelper.CistNure.Timetable
         public string Auditory { get; private set; }
 
         /// <summary>
-        /// Группы, у которых проводится занятие.
+        /// Группа, у которой проводится занятие.
         /// </summary>
+        /// <remarks>В качестве группы часто указывается поток - множество групп через запятую.</remarks>
         public string Groups { get; private set; }
 
         /// <summary>
@@ -53,6 +54,7 @@ namespace UTSHelper.CistNure.Timetable
         /// <param name="dateTimeBegin">Время начала занятия.</param>
         /// <param name="dateTimeEnd">Время окончания занятия.</param>
         /// <param name="pairNumber">Номер пары.</param>
+        /// <param name="auditory">Аудитория, в которой проводится занятие.</param>
         /// <param name="groups">Группы, у которых проводится занятие.</param>
         public Lesson(string subject, string type, DateTime dateTimeBegin, DateTime dateTimeEnd, int pairNumber, string auditory, string groups)
         {
@@ -76,44 +78,25 @@ namespace UTSHelper.CistNure.Timetable
         /// Строковое описание события расписания в особом - подходящем для файлов почасовки - формате.
         /// </summary>
         /// <returns>Строка, включающая в себя дату проведения, время занятия, набор групп.</returns>
-        public override string ToString()
+        public string ToTimesheetString()
         {
-            return DateTimeBegin.ToShortDateString() + "\t" + PairTimeByNumber(PairNumber) + ",\t" + Groups;
+            return DateTimeBegin.ToShortDateString() 
+                + "\t" + Settings.PairTimeByNumber(PairNumber) 
+                + ",\t" + Settings.GetAliasGroups(Groups);
         }
-        
+
+        /// <summary>
+        /// Строковое описание события расписания в формате для списка задач.
+        /// </summary>
+        /// <returns>Строка вида "время_начала-время_окончания, аудитория, дисциплина, вид_работы (группа).".</returns>
         public string ToTasklistString()
         {
             string groups = Settings.GetAliasGroups(Groups);
-            return PairTimeByNumber(PairNumber) + ", " 
+            return Settings.PairTimeByNumber(PairNumber) + ", " 
                 + Settings.GetAliasAuditory(Auditory) + ", " 
                 + Settings.GetAliasSubject(Subject) + ", " 
                 + Settings.GetAliasType(Type) 
                 + " (" + groups + ").";
-        }
-
-        private string PairTimeByNumber(int pairNumber)
-        {
-            switch (pairNumber)
-            {
-                case 1:
-                    return "7:45-9:20";
-                case 2:
-                    return "9:30-11:05";
-                case 3:
-                    return "11:15-12:50";
-                case 4:
-                    return "13:10-14:45";
-                case 5:
-                    return "14:55-16:30";
-                case 6:
-                    return "16:40-18:15";
-                case 7:
-                    return "18:25-20:00";
-                case 8:
-                    return "20:10-21:45";
-                default:
-                    return "0:00-00:00";
-            }
         }
     }
 }

@@ -55,8 +55,4 @@ namespace UTSHelper.CistNure.Timetable
             return NameFull;
         }
     }
-
-    //public enum TimetableEventTypes
-    //{
-    //}
 }

@@ -35,21 +35,16 @@ namespace UTSHelper
             InitializeComponent();
 
             // инициализация пустого выпадающего списка факультетов.
-            //facultyComboBox.Focus(); // not work!
-            //facultyComboBox.Items.Add("--- Select --- ");
-            //facultyComboBox.SelectedIndex = 0;
             facultyComboBox.SelectedIndexChanged += facultyComboBox_SelectedIndexChanged;
 
             // инициализация пустого выпадающего списка кафедр.
             departmentComboBox.Items.Add("--- Select faculty --- ");
             departmentComboBox.SelectedIndex = 0;
-            //departmentComboBox.SelectedIndexChanged += departmentComboBox_SelectedIndexChanged;
-
+            
             // инициализация пустого выпадающего списка преподавателей.
             teacherComboBox.Items.Add("--- Select department --- ");
             teacherComboBox.SelectedIndex = 0;
-            //teacherComboBox.SelectedIndexChanged += teacherComboBox_SelectedIndexChanged;
-
+            
             teacherLabel.Enabled = false;
             teacherComboBox.Enabled = false;
             getTimesheetButton.Enabled = false;
@@ -62,44 +57,28 @@ namespace UTSHelper
         private void facultyComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetStatus(true);
-            //if (facultyComboBox.SelectedIndex != 0)
-            //{
+
             UTSController.ClearCollections();
-                departmentComboBox.Items.Clear();
-                string selectedFaculty = facultyComboBox.SelectedItem.ToString();
-                string[] departments = UTSController.GetDepartments(selectedFaculty);
-                Array.Sort(departments);
-                departmentComboBox.Items.AddRange(departments);
-                departmentComboBox.SelectedIndexChanged += departmentComboBox_SelectedIndexChanged; 
-            
+            departmentComboBox.Items.Clear();
+
+            string selectedFaculty = Settings.GetFacultyFullName(facultyComboBox.SelectedItem.ToString());
+            string[] departments = UTSController.GetDepartments(selectedFaculty);
+            Array.Sort(departments);
+            departmentComboBox.Items.AddRange(departments);
+            departmentComboBox.SelectedIndexChanged += departmentComboBox_SelectedIndexChanged;
+
             teacherLabel.Enabled = false;
-                teacherComboBox.Enabled = false;
-                getTimesheetButton.Enabled = false;
+            teacherComboBox.Enabled = false;
+            getTimesheetButton.Enabled = false;
 
 
-                subjectLabel.Enabled = false;
-                timesheetLabel.Enabled = false;
-                typeLabel.Enabled = false;
-                filterSubjectComboBox.Enabled = false;
-                filterTypeComboBox.Enabled = false;
-                timesheetTextBox.Enabled = false;
-                //filterSubjectComboBox.Items.Clear();
-           // }
-           // else
-           // {
-                // }
-                SetStatus(false);
-        }
-
-        /// <summary>
-        /// заглушка для отладки, автовыбор факультета, кафедры и преподавателя.
-        /// </summary>
-        internal void InitForDebagLyashenko()
-        {
-            facultyComboBox.SelectedIndex = 8;      // КИУ
-            departmentComboBox.SelectedIndex = 2;   // ЭВМ
-            teacherComboBox.SelectedIndex = 23;     // Ляшенко
-            setDatesButton.PerformClick();          // текущий месяц для отчетности.
+            subjectLabel.Enabled = false;
+            timesheetLabel.Enabled = false;
+            typeLabel.Enabled = false;
+            filterSubjectComboBox.Enabled = false;
+            filterTypeComboBox.Enabled = false;
+            timesheetTextBox.Enabled = false;
+            SetStatus(false);
         }
 
         /// <summary>
@@ -111,33 +90,28 @@ namespace UTSHelper
             departmentComboBox.SelectedIndex = 2;   // ЭВМ
             teacherComboBox.SelectedIndex = 16;     // Иващенко
             setDatesCurrentMonthButton.PerformClick();          // текущий месяц
+            getTimesheetButton.PerformClick();          // получить заготовку для почасовки
             getTasklistButton.PerformClick();          // получить список дел
         }
 
         private void departmentComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetStatus(true);
-            //if (departmentComboBox.SelectedIndex != 0)
-            //{
             teacherComboBox.Items.Clear();
             string selectedDepartment = departmentComboBox.SelectedItem.ToString();
             string[] teachers = UTSController.GetTeachers(selectedDepartment);
             Array.Sort(teachers);
             teacherComboBox.Items.AddRange(teachers);
-                teacherLabel.Enabled = true;
-                teacherComboBox.Enabled = true;
-                getTimesheetButton.Enabled = false;
-                subjectLabel.Enabled = false;
-                timesheetLabel.Enabled = false;
-                typeLabel.Enabled = false;
-                filterSubjectComboBox.Enabled = false;
-                filterTypeComboBox.Enabled = false;
-                timesheetTextBox.Enabled = false;
-           // }
-           // else
-           // {
-                // }
-                SetStatus(false);
+            teacherLabel.Enabled = true;
+            teacherComboBox.Enabled = true;
+            getTimesheetButton.Enabled = false;
+            subjectLabel.Enabled = false;
+            timesheetLabel.Enabled = false;
+            typeLabel.Enabled = false;
+            filterSubjectComboBox.Enabled = false;
+            filterTypeComboBox.Enabled = false;
+            timesheetTextBox.Enabled = false;
+            SetStatus(false);
         }
 
         private void teacherComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -154,16 +128,6 @@ namespace UTSHelper
         private void setDatesCurrentMonthButton_Click(object sender, EventArgs e)
         {
             AssumeDates(DateTime.Now.Year, DateTime.Now.Month);
-
-            // for test
-            //List<string> list = new List<string>(12);
-            //for (int i = 1; i < 13; i++)
-            //{
-            //    System.Threading.Thread.Sleep(1000);
-            //    AssumeDates(DateTime.Now.Year, i);
-            //    list.Add(fromDatePicker.Value.ToShortDateString() + " " + toDatePicker.Value.ToShortDateString());
-            //}
-            //timeSheetTextBox.Lines = list.ToArray();
         }
 
         private void setDatesNextMonthButton_Click(object sender, EventArgs e)
@@ -183,17 +147,17 @@ namespace UTSHelper
             string selectedSubject = filterSubjectComboBox.SelectedItem.ToString();
             string selectedType = filterTypeComboBox.SelectedItem.ToString();
 
-            var table = m_timetable.Events.Where(ev => ev.Subject == selectedSubject && ev.Type == selectedType).ToArray();
+            var table = _timetable.Events.Where(ev => ev.Subject == selectedSubject && ev.Type == selectedType).ToArray();
 
             timesheetTextBox.Text = "";
             foreach (Lesson ttEvent in table)
-                timesheetTextBox.Text += ttEvent.ToString() + "\r\n";
+                timesheetTextBox.Text += ttEvent.ToTimesheetString() + "\r\n";
         }
 
         private void filterSubjectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             filterTypeComboBox.Items.Clear();
-            filterTypeComboBox.Items.AddRange(m_timetable.Subjects.First(subj => subj.NameFull == filterSubjectComboBox.SelectedItem.ToString()).Types);
+            filterTypeComboBox.Items.AddRange(_timetable.Subjects.First(subj => subj.NameFull == filterSubjectComboBox.SelectedItem.ToString()).Types);
             timesheetTextBox.Text = "";
         }
 
@@ -229,7 +193,12 @@ namespace UTSHelper
         /// <param name="faculties">Коллекция </param>
         public void FillFaculties(IEnumerable<string> faculties)
         {
-            facultyComboBox.Items.AddRange(faculties.ToArray<string>());
+            // linq!!!
+            foreach (string faculty in faculties)
+            {
+                facultyComboBox.Items.Add(Settings.GetFacultyShortName(faculty));
+            }
+            //facultyComboBox.Items.AddRange(faculties.ToArray<string>());
             facultyComboBox.SelectedIndexChanged += facultyComboBox_SelectedIndexChanged;
             facultyComboBox.Focus();
         }
@@ -331,18 +300,15 @@ namespace UTSHelper
             }
         }
 
-        Timetable m_timetable;
+        Timetable _timetable;
 
         private void FillTimetable(Timetable timetable)
         {
-            m_timetable = timetable;
+            _timetable = timetable;
 
             filterSubjectComboBox.Items.Clear();
             filterSubjectComboBox.Items.AddRange(timetable.Subjects);
             timesheetTextBox.Text = "";
-
-            //foreach (TimetableEvent ttEvent in timetable.Events)
-            //    timeSheetTextBox.Text += ttEvent.ToString() + "\r\n";
 
             subjectLabel.Enabled = true;
             timesheetLabel.Enabled = true;

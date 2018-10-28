@@ -25,6 +25,12 @@ namespace UTSHelper.CistNure.Timetable
         /// </summary>
         public string FullName { get; private set; }
 
+        /// <summary>
+        /// Конструктор, создание события расписания.
+        /// </summary>
+        /// <param name="id">Идентификатор типа.</param>
+        /// <param name="idBase">Идентификатор базового типа для текущего.</param>
+        /// <param name="fullName">Полное название типа занятия.</param>
         public TimetableEventTypes(int id, int idBase, string fullName)
         {
             Id = id;
@@ -32,6 +38,17 @@ namespace UTSHelper.CistNure.Timetable
             FullName = fullName;
         }
 
+        /// <summary>
+        /// Закрытый конструктор по умолчанию.
+        /// </summary>
+        private TimetableEventTypes()
+        {
+        }
+
+        /// <summary>
+        /// Строковое описание типа занятия, его полное название.
+        /// </summary>
+        /// <returns>Полное название типа занятия.</returns>
         public override string ToString()
         {
             return FullName;

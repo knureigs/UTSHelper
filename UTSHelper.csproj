@@ -67,6 +67,7 @@
     <Compile Include="CistNure\Timetable\Lesson.cs" />
     <Compile Include="CistNure\Timetable\Settings.cs" />
     <Compile Include="CistNure\Timetable\TimetableEventTypes.cs" />
+    <Compile Include="Utils\DateTimeUnixTimestampConverter.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

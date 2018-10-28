@@ -14,7 +14,7 @@ namespace UTSHelper
         /// <summary>
         /// Общий контроллер для системы.
         /// </summary>
-        private UTSController m_utsController;
+        private UTSController _utsController;
 
         public MainForm()
         {
@@ -37,8 +37,8 @@ namespace UTSHelper
         /// </summary>
         private void StartWork()
         {
-            m_utsController = new UTSController(utsControl);
-            m_utsController.Init();
+            _utsController = new UTSController(utsControl);
+            _utsController.Init();
         }
 
         #endregion

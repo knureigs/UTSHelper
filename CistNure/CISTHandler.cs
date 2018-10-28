@@ -39,6 +39,11 @@ namespace UTSHelper
             return dictionary;
         }
 
+        /// <summary>
+        /// Возвращает коллекцию кафедр факультета. 
+        /// </summary>
+        /// <param name="facultyId">Строковый идентификатор факультета.</param>
+        /// <returns>Словарь, в котором по строковому ключу можно получить название кафедры.</returns>
         public Dictionary<string, string> GetDepartments(string facultyId)
         {
             // путь к сохраненным результатам запроса.
@@ -53,6 +58,11 @@ namespace UTSHelper
             return dictionary;
         }
 
+        /// <summary>
+        /// Возвращает коллекцию преподавателей кафедры. 
+        /// </summary>
+        /// <param name="department"></param>
+        /// <returns>Словарь, в котором по строковому ключу можно получить объект, описывающий преподавателя кафедры.</returns>
         public Dictionary<string, string> GetTeachers(string department)
         {
             // путь к сохраненным результатам запроса.
@@ -72,9 +82,9 @@ namespace UTSHelper
             string utBegin = begin.ToUnixTimestamp().ToString();
             string utEnd = end.ToUnixTimestamp().ToString();
 
-            //string savedData = "SavedData/timetable" + teacherId + utBegin + utEnd + ".json";
+            string savedData = "SavedData/timetable" + teacherId + utBegin + utEnd + ".json";
             // заглушка для проверки при неработающем ЦИСТе
-            string savedData = "SavedData/timetable435357115383304001541012400.json";
+            //string savedData = "SavedData/timetable435357115383304001541012400.json";
 
             json = GetResponse(savedData, CistRequests.GetTimeSheetRequestString(teacherId, utBegin, utEnd));
                             
@@ -117,7 +127,7 @@ namespace UTSHelper
         {
             if (json.StartsWith("Error"))
             {
-                System.Windows.Forms.MessageBox.Show("json");
+                System.Windows.Forms.MessageBox.Show(json);
                 return true;
             }
             else
@@ -153,7 +163,7 @@ namespace UTSHelper
                 else
                 {
                     string error = JsonConverter.ParseError(json).Error;
-                    return "Error:" + error;
+                    return "Error: " + error;
                 }
             }
 

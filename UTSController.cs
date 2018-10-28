@@ -17,29 +17,28 @@ namespace UTSHelper
         /// <summary>
         /// Контролируемый общий элемент управления системы.
         /// </summary>
-        private UTSControl m_utsControl;
+        private UTSControl _utsControl;
 
         /// <summary>
         /// Работа с API сайта расписания университета.
         /// </summary>
-        private CISTHandler m_cistHandler;
+        private CISTHandler _cistHandler;
 
         /// <summary>
-        /// Факультету университета. Словарь включает в себя идентификатор (строковый) и полное название.
+        /// Факультеты университета. Словарь включает в себя идентификатор (строковый) и полное название.
         /// </summary>
-        private Dictionary<string, string> m_faculties;
+        private Dictionary<string, string> _faculties;
 
         /// <summary>
         /// Кафедры выбранного факультета. Словарь включает в себя идентификатор и краткое название.
         /// </summary>
-        private Dictionary<string, string> m_departments;
+        private Dictionary<string, string> _departments;
 
         /// <summary>
         /// Преподаватели выбранной кафедры. Словарь включает в себя идентификатор и Фамилия И.О.
         /// </summary>
-        private Dictionary<string, string> m_teachers;
-
-
+        private Dictionary<string, string> _teachers;
+        
         #endregion
 
         #region Конструктор.
@@ -50,12 +49,10 @@ namespace UTSHelper
         /// <param name="utsControl">Общий элемент управления системы.</param>
         public UTSController(UTSControl utsControl)
         {
-            m_utsControl = utsControl;
-            m_utsControl.UTSController = this;
+            _utsControl = utsControl;
+            _utsControl.UTSController = this;
 
-            m_cistHandler = new CISTHandler();
-
-            //m_faculties = new Dictionary<int, string>();
+            _cistHandler = new CISTHandler();
         }
 
         #endregion
@@ -68,13 +65,13 @@ namespace UTSHelper
         public void Init()
         {
             // получить факультеты университета и передать их список элементу управления для начала работы.
-            m_faculties = m_cistHandler.GetFaculties();
-            m_utsControl.FillFaculties(m_faculties.Select(f => f.Value).ToArray());
+            _faculties = _cistHandler.GetFaculties();
+            _utsControl.FillFaculties(_faculties.Select(f => f.Value).ToArray());
 
-            m_departments = new Dictionary<string, string>();
-            m_teachers = new Dictionary<string, string>();
+            _departments = new Dictionary<string, string>();
+            _teachers = new Dictionary<string, string>();
 
-            m_utsControl.InitForDebag();
+            _utsControl.InitForDebag();
         }
 
         #endregion
@@ -88,16 +85,9 @@ namespace UTSHelper
         public string[] GetDepartments(string faculty)
         {
             string[] departments;
-           // if (m_departments.Count == 0)
-            //{
-                string id = m_faculties.FirstOrDefault(x => x.Value == faculty).Key;
-                m_departments = m_cistHandler.GetDepartments(id);
-            //}
-            //else
-            //{
-            //    departments = new string[m_departments.Count];
-            //}
-            departments = m_departments.Select(d => d.Value).ToArray();
+            string id = _faculties.FirstOrDefault(x => x.Value == faculty).Key;
+            _departments = _cistHandler.GetDepartments(id);
+            departments = _departments.Select(d => d.Value).ToArray();
 
             return departments;
         }
@@ -105,29 +95,29 @@ namespace UTSHelper
         public string[] GetTeachers(string department)
         {
             string[] teachers;
-            if (m_teachers.Count == 0)
+            if (_teachers.Count == 0)
             {
-                m_teachers = m_cistHandler.GetTeachers(m_departments.FirstOrDefault(x => x.Value == department).Key);
+                _teachers = _cistHandler.GetTeachers(_departments.FirstOrDefault(x => x.Value == department).Key);
             }
             else
             {
-                teachers = new string[m_teachers.Count];
+                teachers = new string[_teachers.Count];
             }
-            teachers = m_teachers.Select(d => d.Value).ToArray();
+            teachers = _teachers.Select(d => d.Value).ToArray();
 
             return teachers;
         }
 
         public Timetable GetTimetable(string teacher, DateTime begin, DateTime end)
         {
-            string teacherId = m_teachers.FirstOrDefault(x => x.Value == teacher).Key;
-            return m_cistHandler.GetTimetable(teacherId, begin, end);
+            string teacherId = _teachers.FirstOrDefault(x => x.Value == teacher).Key;
+            return _cistHandler.GetTimetable(teacherId, begin, end);
         }
 
         internal void ClearCollections()
         {
-            m_departments.Clear();
-            m_teachers.Clear();
+            _departments.Clear();
+            _teachers.Clear();
         }
     }
 }
