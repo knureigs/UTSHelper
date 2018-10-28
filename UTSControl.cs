@@ -50,7 +50,7 @@ namespace UTSHelper
             teacherComboBox.SelectedIndex = 0;
             //teacherComboBox.SelectedIndexChanged += teacherComboBox_SelectedIndexChanged;
 
-            label3.Enabled = false;
+            teacherLabel.Enabled = false;
             teacherComboBox.Enabled = false;
             getTimesheetButton.Enabled = false;
         }
@@ -72,17 +72,17 @@ namespace UTSHelper
                 departmentComboBox.Items.AddRange(departments);
                 departmentComboBox.SelectedIndexChanged += departmentComboBox_SelectedIndexChanged; 
             
-            label3.Enabled = false;
+            teacherLabel.Enabled = false;
                 teacherComboBox.Enabled = false;
                 getTimesheetButton.Enabled = false;
 
 
-                label6.Enabled = false;
-                label7.Enabled = false;
-                label8.Enabled = false;
+                subjectLabel.Enabled = false;
+                timesheetLabel.Enabled = false;
+                typeLabel.Enabled = false;
                 filterSubjectComboBox.Enabled = false;
                 filterTypeComboBox.Enabled = false;
-                timeSheetTextBox.Enabled = false;
+                timesheetTextBox.Enabled = false;
                 //filterSubjectComboBox.Items.Clear();
            // }
            // else
@@ -111,7 +111,7 @@ namespace UTSHelper
             departmentComboBox.SelectedIndex = 2;   // ЭВМ
             teacherComboBox.SelectedIndex = 16;     // Иващенко
             setDatesCurrentMonthButton.PerformClick();          // текущий месяц
-            getTaskListButton.PerformClick();          // получить список дел
+            getTasklistButton.PerformClick();          // получить список дел
         }
 
         private void departmentComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -124,15 +124,15 @@ namespace UTSHelper
             string[] teachers = UTSController.GetTeachers(selectedDepartment);
             Array.Sort(teachers);
             teacherComboBox.Items.AddRange(teachers);
-                label3.Enabled = true;
+                teacherLabel.Enabled = true;
                 teacherComboBox.Enabled = true;
                 getTimesheetButton.Enabled = false;
-                label6.Enabled = false;
-                label7.Enabled = false;
-                label8.Enabled = false;
+                subjectLabel.Enabled = false;
+                timesheetLabel.Enabled = false;
+                typeLabel.Enabled = false;
                 filterSubjectComboBox.Enabled = false;
                 filterTypeComboBox.Enabled = false;
-                timeSheetTextBox.Enabled = false;
+                timesheetTextBox.Enabled = false;
            // }
            // else
            // {
@@ -143,12 +143,12 @@ namespace UTSHelper
         private void teacherComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             getTimesheetButton.Enabled = true;
-            label6.Enabled = false;
-            label7.Enabled = false;
-            label8.Enabled = false;
+            subjectLabel.Enabled = false;
+            timesheetLabel.Enabled = false;
+            typeLabel.Enabled = false;
             filterSubjectComboBox.Enabled = false;
             filterTypeComboBox.Enabled = false;
-            timeSheetTextBox.Enabled = false;
+            timesheetTextBox.Enabled = false;
         }
 
         private void setDatesCurrentMonthButton_Click(object sender, EventArgs e)
@@ -175,7 +175,7 @@ namespace UTSHelper
 
         private void setDatesButton_Click(object sender, EventArgs e)
         {
-            AssumeDateForCurrentMonth();
+            AssumeDatesForCurrentMonth();
         }
 
         private void filterTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -185,16 +185,16 @@ namespace UTSHelper
 
             var table = m_timetable.Events.Where(ev => ev.Subject == selectedSubject && ev.Type == selectedType).ToArray();
 
-            timeSheetTextBox.Text = "";
+            timesheetTextBox.Text = "";
             foreach (Lesson ttEvent in table)
-                timeSheetTextBox.Text += ttEvent.ToString() + "\r\n";
+                timesheetTextBox.Text += ttEvent.ToString() + "\r\n";
         }
 
         private void filterSubjectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             filterTypeComboBox.Items.Clear();
             filterTypeComboBox.Items.AddRange(m_timetable.Subjects.First(subj => subj.NameFull == filterSubjectComboBox.SelectedItem.ToString()).Types);
-            timeSheetTextBox.Text = "";
+            timesheetTextBox.Text = "";
         }
 
         private void getTimesheetButton_Click(object sender, EventArgs e)
@@ -208,7 +208,7 @@ namespace UTSHelper
             FillTimetable(timetable);
         }
 
-        private void getTaskListButton_Click(object sender, EventArgs e)
+        private void getTasklistButton_Click(object sender, EventArgs e)
         {
             DateTime begin = fromDatePicker.Value;
             // добавление одного дня, для включения верхней границы в диапазон
@@ -216,7 +216,7 @@ namespace UTSHelper
             string teacher = teacherComboBox.SelectedItem.ToString();
 
             Timetable timetable = UTSController.GetTimetable(teacher, begin, end);
-            FillTaskList(timetable);
+            FillTasklist(timetable);
         }
 
         #endregion
@@ -256,7 +256,7 @@ namespace UTSHelper
         /// Предложить значения полей выбора дат, как для временных рамок типичного отчетного месяца.
         /// </summary>
         /// <remarks>Deprecated.</remarks>
-        private void AssumeDateForCurrentMonth()
+        private void AssumeDatesForCurrentMonth()
         {
             DateTime begin;
             DateTime now = DateTime.Now;
@@ -339,27 +339,27 @@ namespace UTSHelper
 
             filterSubjectComboBox.Items.Clear();
             filterSubjectComboBox.Items.AddRange(timetable.Subjects);
-            timeSheetTextBox.Text = "";
+            timesheetTextBox.Text = "";
 
             //foreach (TimetableEvent ttEvent in timetable.Events)
             //    timeSheetTextBox.Text += ttEvent.ToString() + "\r\n";
 
-            label6.Enabled = true;
-            label7.Enabled = true;
-            label8.Enabled = true;
+            subjectLabel.Enabled = true;
+            timesheetLabel.Enabled = true;
+            typeLabel.Enabled = true;
             filterSubjectComboBox.Enabled = true;
             filterTypeComboBox.Enabled = true;
-            timeSheetTextBox.Enabled = true;
+            timesheetTextBox.Enabled = true;
         }
 
         // for dual pair
         // private Lesson _previousPair;
 
-        private void FillTaskList(Timetable timetable)
+        private void FillTasklist(Timetable timetable)
         {
-            taskListTextBox.Text = "";
+            tasklistTextBox.Text = "";
 
-            const string dayTaskListTitleBegin = "Задачи на ";
+            const string dayTasklistTitleBegin = "Задачи на ";
 
             int daysAmount = (toDatePicker.Value - fromDatePicker.Value).Days;
             DateTime currentDate = fromDatePicker.Value.Date;
@@ -367,8 +367,8 @@ namespace UTSHelper
             {
                 // подготовка заголовка списка дел на текущий день
                 string currentDay = currentDate.ToString("yyyy.MM.dd") + ", " + currentDate.ToString("dddd");
-                string dayTaskListTitle = dayTaskListTitleBegin + currentDay + ":";
-                taskListTextBox.Text += dayTaskListTitle + "\r\n";
+                string dayTasklistTitle = dayTasklistTitleBegin + currentDay + ":";
+                tasklistTextBox.Text += dayTasklistTitle + "\r\n";
 
                 // добавление задач на текущий день
                 foreach (Lesson lesson in timetable.Events)
@@ -385,7 +385,7 @@ namespace UTSHelper
                     //_previousPair = temp.Remove(0, temp.IndexOf(","));
 
                     //string date = ttEvent.DateTimeBegin.ToString("YYYY.MM.dd") + ", " + now.ToString("dddd") + ":";
-                    taskListTextBox.Text += "- " + lesson.ToTaskListString() + "\r\n";
+                    tasklistTextBox.Text += "- " + lesson.ToTasklistString() + "\r\n";
                 }
 
                 currentDate = currentDate.AddDays(1);

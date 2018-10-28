@@ -81,7 +81,7 @@ namespace UTSHelper.CistNure.Timetable
             return DateTimeBegin.ToShortDateString() + "\t" + PairTimeByNumber(PairNumber) + ",\t" + Groups;
         }
         
-        public string ToTaskListString()
+        public string ToTasklistString()
         {
             string groups = Settings.GetAliasGroups(Groups);
             return PairTimeByNumber(PairNumber) + ", " 

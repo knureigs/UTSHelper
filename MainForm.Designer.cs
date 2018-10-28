@@ -28,24 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.utsControl1 = new UTSHelper.UTSControl();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.utsControl = new UTSHelper.UTSControl();
             this.SuspendLayout();
             // 
-            // utsControl1
+            // utsControl
             // 
-            this.utsControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.utsControl1.Location = new System.Drawing.Point(0, 0);
-            this.utsControl1.Name = "utsControl1";
-            this.utsControl1.Size = new System.Drawing.Size(784, 493);
-            this.utsControl1.TabIndex = 0;
-            this.utsControl1.UTSController = null;
+            this.utsControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.utsControl.Location = new System.Drawing.Point(0, 0);
+            this.utsControl.MinimumSize = new System.Drawing.Size(200, 440);
+            this.utsControl.Name = "utsControl";
+            this.utsControl.Size = new System.Drawing.Size(784, 441);
+            this.utsControl.TabIndex = 0;
+            this.utsControl.UTSController = null;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 493);
-            this.Controls.Add(this.utsControl1);
+            this.ClientSize = new System.Drawing.Size(784, 441);
+            this.Controls.Add(this.utsControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(600, 480);
             this.Name = "MainForm";
             this.Text = "University Timesheet Helper";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -55,7 +59,7 @@
 
         #endregion
 
-        private UTSControl utsControl1;
+        private UTSControl utsControl;
     }
 }
 

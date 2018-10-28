@@ -37,7 +37,7 @@ namespace UTSHelper
         /// </summary>
         private void StartWork()
         {
-            m_utsController = new UTSController(utsControl1);
+            m_utsController = new UTSController(utsControl);
             m_utsController.Init();
         }
 

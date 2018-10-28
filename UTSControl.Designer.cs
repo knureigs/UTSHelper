@@ -28,116 +28,118 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.facultyLabel = new System.Windows.Forms.Label();
             this.facultyComboBox = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.departmentLabel = new System.Windows.Forms.Label();
             this.departmentComboBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.teacherLabel = new System.Windows.Forms.Label();
             this.teacherComboBox = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dateFramesGroupBox = new System.Windows.Forms.GroupBox();
             this.setDatesCurrentMonthButton = new System.Windows.Forms.Button();
             this.setDatesNextMonthButton = new System.Windows.Forms.Button();
             this.setDatesButton = new System.Windows.Forms.Button();
             this.toDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
+            this.dateToLabel = new System.Windows.Forms.Label();
             this.fromDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
+            this.dateFromLabel = new System.Windows.Forms.Label();
             this.getTimesheetButton = new System.Windows.Forms.Button();
-            this.getConsultationButton = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.timeSheetTextBox = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.timesheetSettingsSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.getTasklistButton = new System.Windows.Forms.Button();
+            this.timesheetSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.tasklistTextBox = new System.Windows.Forms.TextBox();
+            this.timesheetTextBox = new System.Windows.Forms.TextBox();
+            this.tasklistLabel = new System.Windows.Forms.Label();
+            this.timesheetLabel = new System.Windows.Forms.Label();
+            this.typeLabel = new System.Windows.Forms.Label();
+            this.subjectLabel = new System.Windows.Forms.Label();
             this.filterTypeComboBox = new System.Windows.Forms.ComboBox();
             this.filterSubjectComboBox = new System.Windows.Forms.ComboBox();
-            this.getTaskListButton = new System.Windows.Forms.Button();
-            this.taskListTextBox = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.cistGroupBox = new System.Windows.Forms.GroupBox();
+            this.forcedNetCheckBox = new System.Windows.Forms.CheckBox();
+            this.dateFramesGroupBox.SuspendLayout();
             this.statusStrip.SuspendLayout();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
+            this.timesheetSettingsSplitContainer.Panel1.SuspendLayout();
+            this.timesheetSettingsSplitContainer.Panel2.SuspendLayout();
+            this.timesheetSettingsSplitContainer.SuspendLayout();
+            this.timesheetSplitContainer.Panel1.SuspendLayout();
+            this.timesheetSplitContainer.Panel2.SuspendLayout();
+            this.timesheetSplitContainer.SuspendLayout();
+            this.cistGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // facultyLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
-            this.label1.TabIndex = 110;
-            this.label1.Text = "Факультет";
+            this.facultyLabel.AutoSize = true;
+            this.facultyLabel.Location = new System.Drawing.Point(6, 34);
+            this.facultyLabel.Name = "facultyLabel";
+            this.facultyLabel.Size = new System.Drawing.Size(66, 13);
+            this.facultyLabel.TabIndex = 110;
+            this.facultyLabel.Text = "Факультет:";
             // 
             // facultyComboBox
             // 
             this.facultyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.facultyComboBox.FormattingEnabled = true;
-            this.facultyComboBox.Location = new System.Drawing.Point(6, 23);
+            this.facultyComboBox.Location = new System.Drawing.Point(9, 50);
             this.facultyComboBox.Name = "facultyComboBox";
-            this.facultyComboBox.Size = new System.Drawing.Size(403, 21);
+            this.facultyComboBox.Size = new System.Drawing.Size(138, 21);
             this.facultyComboBox.TabIndex = 1;
             this.facultyComboBox.SelectedIndexChanged += new System.EventHandler(this.facultyComboBox_SelectedIndexChanged);
             // 
-            // label2
+            // departmentLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 13);
-            this.label2.TabIndex = 110;
-            this.label2.Text = "Кафедра";
+            this.departmentLabel.AutoSize = true;
+            this.departmentLabel.Location = new System.Drawing.Point(6, 80);
+            this.departmentLabel.Name = "departmentLabel";
+            this.departmentLabel.Size = new System.Drawing.Size(55, 13);
+            this.departmentLabel.TabIndex = 110;
+            this.departmentLabel.Text = "Кафедра:";
             // 
             // departmentComboBox
             // 
             this.departmentComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.departmentComboBox.FormattingEnabled = true;
-            this.departmentComboBox.Location = new System.Drawing.Point(6, 66);
+            this.departmentComboBox.Location = new System.Drawing.Point(9, 96);
             this.departmentComboBox.Name = "departmentComboBox";
             this.departmentComboBox.Size = new System.Drawing.Size(138, 21);
             this.departmentComboBox.TabIndex = 12;
             // 
-            // label3
+            // teacherLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 100);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
-            this.label3.TabIndex = 110;
-            this.label3.Text = "Преподаватель";
+            this.teacherLabel.AutoSize = true;
+            this.teacherLabel.Location = new System.Drawing.Point(6, 124);
+            this.teacherLabel.Name = "teacherLabel";
+            this.teacherLabel.Size = new System.Drawing.Size(89, 13);
+            this.teacherLabel.TabIndex = 110;
+            this.teacherLabel.Text = "Преподаватель:";
             // 
             // teacherComboBox
             // 
             this.teacherComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.teacherComboBox.FormattingEnabled = true;
-            this.teacherComboBox.Location = new System.Drawing.Point(6, 116);
+            this.teacherComboBox.Location = new System.Drawing.Point(9, 140);
             this.teacherComboBox.Name = "teacherComboBox";
             this.teacherComboBox.Size = new System.Drawing.Size(138, 21);
             this.teacherComboBox.TabIndex = 3;
             this.teacherComboBox.SelectedIndexChanged += new System.EventHandler(this.teacherComboBox_SelectedIndexChanged);
             // 
-            // groupBox1
+            // dateFramesGroupBox
             // 
-            this.groupBox1.Controls.Add(this.setDatesCurrentMonthButton);
-            this.groupBox1.Controls.Add(this.setDatesNextMonthButton);
-            this.groupBox1.Controls.Add(this.setDatesButton);
-            this.groupBox1.Controls.Add(this.toDatePicker);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.fromDatePicker);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(6, 148);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(138, 193);
-            this.groupBox1.TabIndex = 20;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Временные рамки";
+            this.dateFramesGroupBox.Controls.Add(this.setDatesCurrentMonthButton);
+            this.dateFramesGroupBox.Controls.Add(this.setDatesNextMonthButton);
+            this.dateFramesGroupBox.Controls.Add(this.setDatesButton);
+            this.dateFramesGroupBox.Controls.Add(this.toDatePicker);
+            this.dateFramesGroupBox.Controls.Add(this.dateToLabel);
+            this.dateFramesGroupBox.Controls.Add(this.fromDatePicker);
+            this.dateFramesGroupBox.Controls.Add(this.dateFromLabel);
+            this.dateFramesGroupBox.Location = new System.Drawing.Point(9, 181);
+            this.dateFramesGroupBox.Name = "dateFramesGroupBox";
+            this.dateFramesGroupBox.Size = new System.Drawing.Size(138, 193);
+            this.dateFramesGroupBox.TabIndex = 20;
+            this.dateFramesGroupBox.TabStop = false;
+            this.dateFramesGroupBox.Text = "Временные рамки";
             // 
             // setDatesCurrentMonthButton
             // 
@@ -177,14 +179,14 @@
             this.toDatePicker.Size = new System.Drawing.Size(99, 20);
             this.toDatePicker.TabIndex = 15;
             // 
-            // label5
+            // dateToLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 48);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(25, 13);
-            this.label5.TabIndex = 110;
-            this.label5.Text = "До:";
+            this.dateToLabel.AutoSize = true;
+            this.dateToLabel.Location = new System.Drawing.Point(9, 48);
+            this.dateToLabel.Name = "dateToLabel";
+            this.dateToLabel.Size = new System.Drawing.Size(25, 13);
+            this.dateToLabel.TabIndex = 110;
+            this.dateToLabel.Text = "До:";
             // 
             // fromDatePicker
             // 
@@ -194,43 +196,32 @@
             this.fromDatePicker.Size = new System.Drawing.Size(99, 20);
             this.fromDatePicker.TabIndex = 14;
             // 
-            // label4
+            // dateFromLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(23, 13);
-            this.label4.TabIndex = 110;
-            this.label4.Text = "От:";
+            this.dateFromLabel.AutoSize = true;
+            this.dateFromLabel.Location = new System.Drawing.Point(9, 22);
+            this.dateFromLabel.Name = "dateFromLabel";
+            this.dateFromLabel.Size = new System.Drawing.Size(23, 13);
+            this.dateFromLabel.TabIndex = 110;
+            this.dateFromLabel.Text = "От:";
             // 
             // getTimesheetButton
             // 
-            this.getTimesheetButton.Location = new System.Drawing.Point(12, 347);
+            this.getTimesheetButton.Location = new System.Drawing.Point(7, 10);
             this.getTimesheetButton.Name = "getTimesheetButton";
-            this.getTimesheetButton.Size = new System.Drawing.Size(126, 36);
+            this.getTimesheetButton.Size = new System.Drawing.Size(79, 79);
             this.getTimesheetButton.TabIndex = 17;
-            this.getTimesheetButton.Text = "Получить расписание занятий";
+            this.getTimesheetButton.Text = "Получить расписание занятий для табеля";
             this.getTimesheetButton.UseVisualStyleBackColor = true;
             this.getTimesheetButton.Click += new System.EventHandler(this.getTimesheetButton_Click);
-            // 
-            // getConsultationButton
-            // 
-            this.getConsultationButton.Enabled = false;
-            this.getConsultationButton.Location = new System.Drawing.Point(12, 434);
-            this.getConsultationButton.Name = "getConsultationButton";
-            this.getConsultationButton.Size = new System.Drawing.Size(126, 23);
-            this.getConsultationButton.TabIndex = 18;
-            this.getConsultationButton.Text = "Консультации";
-            this.getConsultationButton.UseVisualStyleBackColor = true;
-            this.getConsultationButton.Visible = false;
             // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusStripLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 488);
+            this.statusStrip.Location = new System.Drawing.Point(0, 418);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(601, 22);
+            this.statusStrip.Size = new System.Drawing.Size(679, 22);
             this.statusStrip.TabIndex = 5;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -240,177 +231,203 @@
             this.statusStripLabel.Size = new System.Drawing.Size(118, 17);
             this.statusStripLabel.Text = "toolStripStatusLabel1";
             // 
-            // splitContainer1
+            // timesheetSettingsSplitContainer
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
+            this.timesheetSettingsSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.timesheetSettingsSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.timesheetSettingsSplitContainer.IsSplitterFixed = true;
+            this.timesheetSettingsSplitContainer.Location = new System.Drawing.Point(0, 0);
+            this.timesheetSettingsSplitContainer.Name = "timesheetSettingsSplitContainer";
             // 
-            // splitContainer1.Panel1
+            // timesheetSettingsSplitContainer.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.getTaskListButton);
-            this.splitContainer1.Panel1.Controls.Add(this.getConsultationButton);
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
-            this.splitContainer1.Panel1.Controls.Add(this.getTimesheetButton);
-            this.splitContainer1.Panel1.Controls.Add(this.departmentComboBox);
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainer1.Panel1.Controls.Add(this.label3);
-            this.splitContainer1.Panel1.Controls.Add(this.teacherComboBox);
+            this.timesheetSettingsSplitContainer.Panel1.Controls.Add(this.cistGroupBox);
             // 
-            // splitContainer1.Panel2
+            // timesheetSettingsSplitContainer.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(601, 488);
-            this.splitContainer1.SplitterDistance = 155;
-            this.splitContainer1.TabIndex = 61;
+            this.timesheetSettingsSplitContainer.Panel2.Controls.Add(this.timesheetSplitContainer);
+            this.timesheetSettingsSplitContainer.Size = new System.Drawing.Size(679, 418);
+            this.timesheetSettingsSplitContainer.SplitterDistance = 173;
+            this.timesheetSettingsSplitContainer.TabIndex = 61;
             // 
-            // splitContainer2
+            // getTasklistButton
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer2.IsSplitterFixed = true;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.getTasklistButton.Location = new System.Drawing.Point(7, 10);
+            this.getTasklistButton.Name = "getTasklistButton";
+            this.getTasklistButton.Size = new System.Drawing.Size(79, 79);
+            this.getTasklistButton.TabIndex = 111;
+            this.getTasklistButton.Text = "Получить из расписания список задач";
+            this.getTasklistButton.UseVisualStyleBackColor = true;
+            this.getTasklistButton.Click += new System.EventHandler(this.getTasklistButton_Click);
             // 
-            // splitContainer2.Panel1
+            // timesheetSplitContainer
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.facultyComboBox);
-            this.splitContainer2.Panel1.Controls.Add(this.label1);
+            this.timesheetSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.timesheetSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.timesheetSplitContainer.Location = new System.Drawing.Point(0, 0);
+            this.timesheetSplitContainer.Name = "timesheetSplitContainer";
             // 
-            // splitContainer2.Panel2
+            // timesheetSplitContainer.Panel1
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.taskListTextBox);
-            this.splitContainer2.Panel2.Controls.Add(this.timeSheetTextBox);
-            this.splitContainer2.Panel2.Controls.Add(this.label9);
-            this.splitContainer2.Panel2.Controls.Add(this.label7);
-            this.splitContainer2.Panel2.Controls.Add(this.label8);
-            this.splitContainer2.Panel2.Controls.Add(this.label6);
-            this.splitContainer2.Panel2.Controls.Add(this.filterTypeComboBox);
-            this.splitContainer2.Panel2.Controls.Add(this.filterSubjectComboBox);
-            this.splitContainer2.Size = new System.Drawing.Size(442, 488);
-            this.splitContainer2.SplitterDistance = 83;
-            this.splitContainer2.TabIndex = 0;
+            this.timesheetSplitContainer.Panel1.Controls.Add(this.getTimesheetButton);
+            this.timesheetSplitContainer.Panel1.Controls.Add(this.timesheetTextBox);
+            this.timesheetSplitContainer.Panel1.Controls.Add(this.subjectLabel);
+            this.timesheetSplitContainer.Panel1.Controls.Add(this.timesheetLabel);
+            this.timesheetSplitContainer.Panel1.Controls.Add(this.filterSubjectComboBox);
+            this.timesheetSplitContainer.Panel1.Controls.Add(this.typeLabel);
+            this.timesheetSplitContainer.Panel1.Controls.Add(this.filterTypeComboBox);
             // 
-            // timeSheetTextBox
+            // timesheetSplitContainer.Panel2
             // 
-            this.timeSheetTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.timesheetSplitContainer.Panel2.Controls.Add(this.tasklistTextBox);
+            this.timesheetSplitContainer.Panel2.Controls.Add(this.tasklistLabel);
+            this.timesheetSplitContainer.Panel2.Controls.Add(this.getTasklistButton);
+            this.timesheetSplitContainer.Size = new System.Drawing.Size(502, 418);
+            this.timesheetSplitContainer.SplitterDistance = 300;
+            this.timesheetSplitContainer.TabIndex = 0;
+            // 
+            // tasklistTextBox
+            // 
+            this.tasklistTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.timeSheetTextBox.Enabled = false;
-            this.timeSheetTextBox.Location = new System.Drawing.Point(7, 68);
-            this.timeSheetTextBox.Multiline = true;
-            this.timeSheetTextBox.Name = "timeSheetTextBox";
-            this.timeSheetTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.timeSheetTextBox.Size = new System.Drawing.Size(414, 178);
-            this.timeSheetTextBox.TabIndex = 11;
+            this.tasklistTextBox.Location = new System.Drawing.Point(7, 113);
+            this.tasklistTextBox.Multiline = true;
+            this.tasklistTextBox.Name = "tasklistTextBox";
+            this.tasklistTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tasklistTextBox.Size = new System.Drawing.Size(188, 298);
+            this.tasklistTextBox.TabIndex = 11;
             // 
-            // label7
+            // timesheetTextBox
             // 
-            this.label7.AutoSize = true;
-            this.label7.Enabled = false;
-            this.label7.Location = new System.Drawing.Point(4, 52);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(112, 13);
-            this.label7.TabIndex = 111;
-            this.label7.Text = "Расписание занятий";
+            this.timesheetTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.timesheetTextBox.Enabled = false;
+            this.timesheetTextBox.Location = new System.Drawing.Point(7, 113);
+            this.timesheetTextBox.Multiline = true;
+            this.timesheetTextBox.Name = "timesheetTextBox";
+            this.timesheetTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.timesheetTextBox.Size = new System.Drawing.Size(290, 298);
+            this.timesheetTextBox.TabIndex = 11;
             // 
-            // label8
+            // tasklistLabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Enabled = false;
-            this.label8.Location = new System.Drawing.Point(224, 12);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 13);
-            this.label8.TabIndex = 111;
-            this.label8.Text = "Тип занятия";
+            this.tasklistLabel.AutoSize = true;
+            this.tasklistLabel.Location = new System.Drawing.Point(10, 97);
+            this.tasklistLabel.Name = "tasklistLabel";
+            this.tasklistLabel.Size = new System.Drawing.Size(79, 13);
+            this.tasklistLabel.TabIndex = 111;
+            this.tasklistLabel.Text = "Список задач:";
             // 
-            // label6
+            // timesheetLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Enabled = false;
-            this.label6.Location = new System.Drawing.Point(4, 12);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(52, 13);
-            this.label6.TabIndex = 111;
-            this.label6.Text = "Предмет";
+            this.timesheetLabel.AutoSize = true;
+            this.timesheetLabel.Enabled = false;
+            this.timesheetLabel.Location = new System.Drawing.Point(4, 97);
+            this.timesheetLabel.Name = "timesheetLabel";
+            this.timesheetLabel.Size = new System.Drawing.Size(115, 13);
+            this.timesheetLabel.TabIndex = 111;
+            this.timesheetLabel.Text = "Расписание занятий:";
+            // 
+            // typeLabel
+            // 
+            this.typeLabel.AutoSize = true;
+            this.typeLabel.Enabled = false;
+            this.typeLabel.Location = new System.Drawing.Point(90, 52);
+            this.typeLabel.Name = "typeLabel";
+            this.typeLabel.Size = new System.Drawing.Size(73, 13);
+            this.typeLabel.TabIndex = 111;
+            this.typeLabel.Text = "Тип занятия:";
+            // 
+            // subjectLabel
+            // 
+            this.subjectLabel.AutoSize = true;
+            this.subjectLabel.Enabled = false;
+            this.subjectLabel.Location = new System.Drawing.Point(90, 12);
+            this.subjectLabel.Name = "subjectLabel";
+            this.subjectLabel.Size = new System.Drawing.Size(55, 13);
+            this.subjectLabel.TabIndex = 111;
+            this.subjectLabel.Text = "Предмет:";
             // 
             // filterTypeComboBox
             // 
+            this.filterTypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.filterTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.filterTypeComboBox.Enabled = false;
             this.filterTypeComboBox.FormattingEnabled = true;
-            this.filterTypeComboBox.Location = new System.Drawing.Point(226, 28);
+            this.filterTypeComboBox.Location = new System.Drawing.Point(92, 68);
             this.filterTypeComboBox.Name = "filterTypeComboBox";
-            this.filterTypeComboBox.Size = new System.Drawing.Size(195, 21);
+            this.filterTypeComboBox.Size = new System.Drawing.Size(205, 21);
             this.filterTypeComboBox.TabIndex = 9;
             this.filterTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.filterTypeComboBox_SelectedIndexChanged);
             // 
             // filterSubjectComboBox
             // 
+            this.filterSubjectComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.filterSubjectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.filterSubjectComboBox.Enabled = false;
             this.filterSubjectComboBox.FormattingEnabled = true;
-            this.filterSubjectComboBox.Location = new System.Drawing.Point(6, 28);
+            this.filterSubjectComboBox.Location = new System.Drawing.Point(92, 28);
             this.filterSubjectComboBox.Name = "filterSubjectComboBox";
-            this.filterSubjectComboBox.Size = new System.Drawing.Size(195, 21);
+            this.filterSubjectComboBox.Size = new System.Drawing.Size(205, 21);
             this.filterSubjectComboBox.TabIndex = 8;
             this.filterSubjectComboBox.SelectedIndexChanged += new System.EventHandler(this.filterSubjectComboBox_SelectedIndexChanged);
             // 
-            // getTaskListButton
+            // cistGroupBox
             // 
-            this.getTaskListButton.Location = new System.Drawing.Point(12, 390);
-            this.getTaskListButton.Name = "getTaskListButton";
-            this.getTaskListButton.Size = new System.Drawing.Size(126, 38);
-            this.getTaskListButton.TabIndex = 111;
-            this.getTaskListButton.Text = "Получить список задач";
-            this.getTaskListButton.UseVisualStyleBackColor = true;
-            this.getTaskListButton.Click += new System.EventHandler(this.getTaskListButton_Click);
+            this.cistGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.cistGroupBox.Controls.Add(this.forcedNetCheckBox);
+            this.cistGroupBox.Controls.Add(this.dateFramesGroupBox);
+            this.cistGroupBox.Controls.Add(this.facultyLabel);
+            this.cistGroupBox.Controls.Add(this.teacherComboBox);
+            this.cistGroupBox.Controls.Add(this.facultyComboBox);
+            this.cistGroupBox.Controls.Add(this.teacherLabel);
+            this.cistGroupBox.Controls.Add(this.departmentComboBox);
+            this.cistGroupBox.Controls.Add(this.departmentLabel);
+            this.cistGroupBox.Location = new System.Drawing.Point(8, 8);
+            this.cistGroupBox.Name = "cistGroupBox";
+            this.cistGroupBox.Size = new System.Drawing.Size(157, 403);
+            this.cistGroupBox.TabIndex = 111;
+            this.cistGroupBox.TabStop = false;
+            this.cistGroupBox.Text = "Параметры расписания преподавателей";
             // 
-            // taskListTextBox
+            // forcedNetCheckBox
             // 
-            this.taskListTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.taskListTextBox.Location = new System.Drawing.Point(7, 265);
-            this.taskListTextBox.Multiline = true;
-            this.taskListTextBox.Name = "taskListTextBox";
-            this.taskListTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.taskListTextBox.Size = new System.Drawing.Size(414, 133);
-            this.taskListTextBox.TabIndex = 11;
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(4, 249);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(76, 13);
-            this.label9.TabIndex = 111;
-            this.label9.Text = "Список задач";
+            this.forcedNetCheckBox.AutoSize = true;
+            this.forcedNetCheckBox.Location = new System.Drawing.Point(9, 380);
+            this.forcedNetCheckBox.Name = "forcedNetCheckBox";
+            this.forcedNetCheckBox.Size = new System.Drawing.Size(137, 17);
+            this.forcedNetCheckBox.TabIndex = 111;
+            this.forcedNetCheckBox.Text = "Не использовать кеш";
+            this.forcedNetCheckBox.UseVisualStyleBackColor = true;
             // 
             // UTSControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.timesheetSettingsSplitContainer);
             this.Controls.Add(this.statusStrip);
+            this.MinimumSize = new System.Drawing.Size(200, 440);
             this.Name = "UTSControl";
-            this.Size = new System.Drawing.Size(601, 510);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Size = new System.Drawing.Size(679, 440);
+            this.dateFramesGroupBox.ResumeLayout(false);
+            this.dateFramesGroupBox.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel1.PerformLayout();
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            this.splitContainer2.Panel2.PerformLayout();
-            this.splitContainer2.ResumeLayout(false);
+            this.timesheetSettingsSplitContainer.Panel1.ResumeLayout(false);
+            this.timesheetSettingsSplitContainer.Panel2.ResumeLayout(false);
+            this.timesheetSettingsSplitContainer.ResumeLayout(false);
+            this.timesheetSplitContainer.Panel1.ResumeLayout(false);
+            this.timesheetSplitContainer.Panel1.PerformLayout();
+            this.timesheetSplitContainer.Panel2.ResumeLayout(false);
+            this.timesheetSplitContainer.Panel2.PerformLayout();
+            this.timesheetSplitContainer.ResumeLayout(false);
+            this.cistGroupBox.ResumeLayout(false);
+            this.cistGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -418,34 +435,35 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label facultyLabel;
         private System.Windows.Forms.ComboBox facultyComboBox;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label departmentLabel;
         private System.Windows.Forms.ComboBox departmentComboBox;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label teacherLabel;
         private System.Windows.Forms.ComboBox teacherComboBox;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox dateFramesGroupBox;
         private System.Windows.Forms.Button setDatesButton;
         private System.Windows.Forms.DateTimePicker toDatePicker;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label dateToLabel;
         private System.Windows.Forms.DateTimePicker fromDatePicker;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label dateFromLabel;
         private System.Windows.Forms.Button getTimesheetButton;
-        private System.Windows.Forms.Button getConsultationButton;
         private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.SplitContainer timesheetSettingsSplitContainer;
+        private System.Windows.Forms.SplitContainer timesheetSplitContainer;
         private System.Windows.Forms.ToolStripStatusLabel statusStripLabel;
-        private System.Windows.Forms.TextBox timeSheetTextBox;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox timesheetTextBox;
+        private System.Windows.Forms.Label timesheetLabel;
+        private System.Windows.Forms.Label typeLabel;
+        private System.Windows.Forms.Label subjectLabel;
         private System.Windows.Forms.ComboBox filterTypeComboBox;
         private System.Windows.Forms.ComboBox filterSubjectComboBox;
         private System.Windows.Forms.Button setDatesCurrentMonthButton;
         private System.Windows.Forms.Button setDatesNextMonthButton;
-        private System.Windows.Forms.Button getTaskListButton;
-        private System.Windows.Forms.TextBox taskListTextBox;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button getTasklistButton;
+        private System.Windows.Forms.TextBox tasklistTextBox;
+        private System.Windows.Forms.Label tasklistLabel;
+        private System.Windows.Forms.GroupBox cistGroupBox;
+        private System.Windows.Forms.CheckBox forcedNetCheckBox;
     }
 }
