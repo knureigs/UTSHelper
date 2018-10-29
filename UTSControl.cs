@@ -328,7 +328,7 @@ namespace UTSHelper
             const string dayTasklistTitleBegin = "Задачи на ";
 
             int daysAmount = (toDatePicker.Value - fromDatePicker.Value).Days;
-            DateTime currentDate = fromDatePicker.Value.Date;
+            DateTime currentDate = orderTopLastCheckBox.Checked ? toDatePicker.Value.Date : fromDatePicker.Value.Date;
             for (int i = 0; i <= daysAmount; i++)
             {
                 // подготовка заголовка списка дел на текущий день
@@ -354,7 +354,7 @@ namespace UTSHelper
                     tasklistTextBox.Text += "- " + lesson.ToTasklistString() + "\r\n";
                 }
 
-                currentDate = currentDate.AddDays(1);
+                currentDate = currentDate.AddDays(orderTopLastCheckBox.Checked ? -1 : 1);
             }
         }
 
