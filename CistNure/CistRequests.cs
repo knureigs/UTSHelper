@@ -58,12 +58,24 @@
         /// Построение запроса для получения расписания заданного преподавателя.
         /// </summary>
         /// <param name="idTeacher">Идентификатор преподавателя.</param>
-        /// <param name="timeFrom">Временные рамки расписания, начало.</param>
-        /// <param name="timeTo">Временные рамки расписания, конец.</param>
+        /// <param name="timeFrom">Временные рамки расписания, Unix epoch, начало.</param>
+        /// <param name="timeTo">Временные рамки расписания, Unix epoch, конец.</param>
         /// <returns>Строка запроса для получения расписания.</returns>
         public static string GetTimeSheetRequestString(string idTeacher, string timeFrom, string timeTo)
         {
             return CommonURL + "P_API_EVENTS_TEACHER_JSON?p_id_teacher=" + idTeacher + "&time_from=" + timeFrom + "&time_to=" + timeTo;
+        }
+
+        /// <summary>
+        /// Построение запроса для получения CSV-расписания заданного преподавателя.
+        /// </summary>
+        /// <param name="idTeacher">Идентификатор преподавателя.</param>
+        /// <param name="dateStart">Временные рамки расписания, дата начала.</param>
+        /// <param name="dateEnd">Временные рамки расписания, дата окончания.</param>
+        /// <returns>Строка запроса для получения CSV-расписания.</returns>
+        public static string GetTimeSheetCsvRequestString(string idTeacher, string dateStart, string dateEnd)
+        {
+            return CommonURL + "WEB_IAS_TT_GNR_RASP.GEN_TEACHER_KAF_RASP?ATypeDoc=3&Aid_sotr=" + idTeacher + "&Aid_kaf=0&ADateStart=" + dateStart + "&ADateEnd=" + dateEnd + "&AMultiWorkSheet=0";
         }
     }
 }

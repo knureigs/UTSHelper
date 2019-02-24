@@ -86,8 +86,10 @@ namespace UTSHelper
             // заглушка для проверки при неработающем ЦИСТе
             //string savedData = "SavedData/timetable435357115383304001541012400.json";
 
-            json = GetResponse(savedData, CistRequests.GetTimeSheetRequestString(teacherId, utBegin, utEnd));
-                            
+            //json = GetResponse(savedData, CistRequests.GetTimeSheetRequestString(teacherId, utBegin, utEnd));
+            // расписание, в отличие от других запросов, получаем через конвертацию CSV. Обычное апи нестабильно работает.
+            json = GetResponse(savedData, CistRequests.GetTimeSheetCsvRequestString(teacherId, begin.Date.ToString("dd.MM.yyyy"), end.Date.ToString("dd.MM.yyyy")));
+
             // перевести на использование исключений.
             if (JsonIsError(json))
             {
@@ -144,7 +146,8 @@ namespace UTSHelper
         /// <returns>JSON-ответ от сервера.</returns>
         private string GetResponse(string savedData, string request)
         {
-            string json;          
+            string response;
+            string json;
 
             if (File.Exists(savedData))
             {
@@ -155,15 +158,24 @@ namespace UTSHelper
             else
             {
                 // иначе опрашиваем сайт и сохраняем на будущее ответ. Если он вообще пришел.
-                json = SendRequest(request);
-                if(!json.StartsWith("{ \"Error"))// перевести на использование исключений.
+                response = SendRequest(request);
+                if (response.StartsWith("{"))
                 {
-                    File.WriteAllText(savedData, json);
+                    json = response;
                 }
-                else
+                else// если ответ - не джейсон, а CSV, то конвертируем.
+                {
+                    json = CsvJsonConverter.ConvertCsvToJson(response);
+                }
+
+                if (json.StartsWith("{ \"Error"))// TODO: перевести на использование исключений.
                 {
                     string error = JsonConverter.ParseError(json).Error;
                     return "Error: " + error;
+                }
+                else
+                {
+                    File.WriteAllText(savedData, json);
                 }
             }
 
@@ -193,8 +205,20 @@ namespace UTSHelper
             {
                 case HttpStatusCode.OK:        //HTTP 200 - всё ОК
                     Stream responseStream = response.GetResponseStream();
-                    StreamReader streamReader = new StreamReader(responseStream, Encoding.GetEncoding(response.CharacterSet));
-                    responseData = streamReader.ReadToEnd();
+                    StreamReader streamReader;
+                    try
+                    {
+                        streamReader = new StreamReader(responseStream, Encoding.GetEncoding(response.CharacterSet));
+                        responseData = streamReader.ReadToEnd();
+                    }
+                    catch (ArgumentException aex)
+                    {
+                        if(aex.Message=="Название кодировки \"\" не поддерживается.\r\nИмя параметра: name")
+                        {
+                            streamReader = new StreamReader(responseStream, Encoding.GetEncoding(1251));
+                            responseData = streamReader.ReadToEnd();
+                        }
+                    }
                     break;
                 /*case HttpStatusCode.Forbidden: //HTTP 403 - доступ запрещён
                     break;
@@ -206,7 +230,7 @@ namespace UTSHelper
                     responseData = "Error: GatewayTimeout";
                     break;*/
                 default:                       //другие ошибки
-                    responseData = GetJsonErrorRequestData(response.StatusCode.ToString()); // перевести на использование исключений.
+                    responseData = GetJsonErrorRequestData(response.StatusCode.ToString()); // TODO: перевести на использование исключений.
                     break;
             }
 
